@@ -1,4 +1,4 @@
-%define major 1
+%define major 2
 %define libname %mklibname xfont2 %{major}
 %define devname %mklibname xfont2 -d
 

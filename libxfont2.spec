@@ -39,7 +39,7 @@ Development files for %{name}.
 
 %prep
 %setup -qn libXfont2-%{version}
-%apply_patches
+%autopatch -p1
 
 %build
 %configure \

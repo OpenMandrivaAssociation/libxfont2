@@ -4,13 +4,13 @@
 
 Summary:	X font Library
 Name:		libxfont2
-Version:	2.0.5
+Version:	2.0.6
 Release:	1
 Group:		Development/X11
 License:	MIT
 Url:		http://xorg.freedesktop.org
-Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXfont2-%{version}.tar.bz2
-BuildRequires:	bzip2-devel
+Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXfont2-%{version}.tar.xz
+BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(fontenc)
 BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(xorg-macros)
@@ -38,8 +38,7 @@ Provides:	libxfont2-devel = %{EVRD}
 Development files for %{name}.
 
 %prep
-%setup -qn libXfont2-%{version}
-%autopatch -p1
+%autosetup -n libXfont2-%{version} -p1
 
 %build
 %configure \
@@ -47,10 +46,10 @@ Development files for %{name}.
 	--with-bzip2 \
 	--without-fop
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n %{libname}
 %{_libdir}/libXfont2.so.%{major}*
@@ -59,4 +58,3 @@ Development files for %{name}.
 %{_libdir}/libXfont2.so
 %{_libdir}/pkgconfig/xfont2.pc
 %{_includedir}/X11/fonts/libxfont2.h
-

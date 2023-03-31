@@ -5,7 +5,7 @@
 Summary:	X font Library
 Name:		libxfont2
 Version:	2.0.6
-Release:	1
+Release:	2
 Group:		Development/X11
 License:	MIT
 Url:		http://xorg.freedesktop.org

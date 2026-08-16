@@ -5,7 +5,7 @@
 Summary:	X font Library
 Name:		libxfont2
 Version:	2.0.8
-Release:	1
+Release:	2
 Group:		Development/X11
 License:	MIT
 Url:		https://xorg.freedesktop.org
@@ -45,16 +45,24 @@ Development files for %{name}.
 %prep
 %autosetup -n libXfont2-2.0.8 -p1
 
+%if %{cross_compiling}
+# Host ldconfig via spec-helper cannot process riscv64 ELF and would
+# drop the installed soname symlink.
+%define dont_symlinks_libs 1
+%endif
+
 %build
 %configure \
 	--disable-static \
 	--with-bzip2 \
 	--without-fop
 
-%make_build
+%make_build LIBTOOL=slibtool
 
 %install
-%make_install
+%make_install LIBTOOL=slibtool
+# slibtool also installs an export-symbols archive as .a
+rm -f %{buildroot}%{_libdir}/libXfont2.a
 
 %files -n %{libname}
 %{_libdir}/libXfont2.so.%{major}*

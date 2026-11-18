@@ -4,8 +4,8 @@
 
 Summary:	X font Library
 Name:		libxfont2
-Version:	2.0.8
-Release:	2
+Version:	2.0.10
+Release:	1
 Group:		Development/X11
 License:	MIT
 Url:		https://xorg.freedesktop.org
@@ -43,7 +43,7 @@ Provides:	libxfont2-devel = %{EVRD}
 Development files for %{name}.
 
 %prep
-%autosetup -n libXfont2-2.0.8 -p1
+%autosetup -n libXfont2-%{version} -p1
 
 %if %{cross_compiling}
 # Host ldconfig via spec-helper cannot process riscv64 ELF and would
